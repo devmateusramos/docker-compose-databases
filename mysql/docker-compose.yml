@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  dbmysql:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=godb
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3306:3306"
